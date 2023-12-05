@@ -1,0 +1,162 @@
+/* Reset default styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* App container styles */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.center-container {
+  text-align: center;
+}
+
+/* Header styles */
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Chat container styles */
+.chat-container {
+  width: 600px;
+  max-width: 600px;
+  height: 80vh;
+  max-height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Add this line */
+}
+
+/* Chat messages styles */
+.chat-messages {
+  padding: 16px;
+  height: 80%;
+  overflow-y: auto;
+}
+
+/* Message styles */
+.message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 30px;
+}
+
+/* User message styles */
+.user {
+  background-color: #3498db;
+  color: #fff;
+  align-self: flex-end;
+}
+
+/* Bot message styles */
+.bot {
+  background-color: #2ecc71;
+  color: #fff;
+  align-self: flex-start;
+}
+
+/* Chat input styles */
+.chat-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background-color: #fff;
+  height: 12%;
+}
+
+/* Input styles */
+input {
+  flex: 1;
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button styles */
+button {
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Profile icon styles */
+.profile-icon {
+  font-size: 1.5em;
+  margin-right: 8px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* User icon styles */
+.user-icon {
+  color: #3498db;
+  background-color: #fff;
+}
+
+/* Bot icon styles */
+.bot-icon {
+  color: #2ecc71;
+  background-color: #fff;
+}
+
+/* Name styles in message content */
+.message-content .name {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* User message content styles */
+.user .profile-icon {
+  float: left;
+  margin-right: 8px;
+}
+
+.user .message-content {
+  margin-left: 40px;
+  text-align: left;
+}
+
+/* Bot message content styles */
+.bot .profile-icon {
+  float: right;
+  margin-left: 8px;
+}
+
+.bot .message-content {
+  margin-right: 40px;
+  text-align: right;
+}
+
+/* Name styles in message content */
+.message-content .name-user{
+  display: block;
+  text-align: left;
+}
+
+.message-content .name-bot {
+  display: block;
+  text-align: right;
+}
