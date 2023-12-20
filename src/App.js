@@ -69,7 +69,7 @@ function App() {
   return (
     <div className="App">
       <div className="center-container">
-        <h1>QA Tradisi Bali</h1>
+        <h1>QnA Tradisi Bali</h1>
         <div className="chat-container" ref={chatContainerRef}>
           <div className="chat-messages">
             {messages.map((msg, index) => (
