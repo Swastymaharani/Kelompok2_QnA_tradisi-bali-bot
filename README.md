@@ -22,7 +22,7 @@ Arsitektur aplikasi ini terbagi menjadi 3 bagian :
    Model question answering yang dibangun dihosting ke Hugging Face, sehingga bagian backend dapat mengakses model melalui API Hugging Face. Data hasil pemrosesan model akan dikirimkan ke backend sebagai json response. Berikut link Hugging Face model : https://huggingface.co/SwastyMaharani/fine-tuned-tradisi-bali/tree/main
 
 
-Model question aswering dibangun menggunakan DistilBert. Berikut penjelasan terkait model yang digunakan.
+Model question aswering dibangun menggunakan DistilBERT. Berikut penjelasan terkait model yang digunakan.
 
 1. Dataset
 
@@ -30,11 +30,15 @@ Model question aswering dibangun menggunakan DistilBert. Berikut penjelasan terk
    
 2. Algoritma Machine learning
 
-   Algoritma Machine Learning yang digunakan untuk pembuatan question answering adalah DistilBert. DistilBert adalah language model yang berupa hasil distilasi dari model BERT. DistilBERT memiliki parameter 40% lebih sedikit daripada model BERT, kecepatan 60% lebih cepat, serta memiliki 97% kinerja dari model BERT. DistilBert menggunakan arsitektur transformer yang sama dengan BERT, yaitu transformer encoder yang terdiri dari beberapa lapisan self-attention dan feedforward neural networks. Namun, untuk mengurangi jumlah parameter, DistilBert memiliki hanya dua pertiga dari jumlah lapisan yang dimiliki oleh BERT dan mengurangi ukuran vektor representasi. Proses pelatihan DistilBert memiliki corpus yang sama dengan model BERT, yaitu gabungan dari Wikipedia Inggris dengan Book Corpus. Model pre-training DistilBert yang digunakan pada aplikasi ini berasal dari Hugging Face : https://huggingface.co/distilbert-base-uncased
+   Algoritma Machine Learning yang digunakan untuk pembuatan question answering adalah DistilBERT. DistilBERT adalah language model yang berupa hasil distilasi dari model BERT. DistilBERT memiliki parameter 40% lebih sedikit daripada model BERT, kecepatan 60% lebih cepat, serta memiliki 97% kinerja dari model BERT. DistilBERT menggunakan arsitektur transformer yang sama dengan BERT, yaitu transformer encoder yang terdiri dari beberapa lapisan self-attention dan feedforward neural networks. Namun, untuk mengurangi jumlah parameter, DistilBERT memiliki hanya dua pertiga dari jumlah lapisan yang dimiliki oleh BERT dan mengurangi ukuran vektor representasi. Proses pelatihan DistilBERT memiliki corpus yang sama dengan model BERT, yaitu gabungan dari Wikipedia Inggris dengan Book Corpus. Arsitektur dari DistilBERT adalah sebagai berikut :
+
+   <img width="298" alt="image" src="https://github.com/Swastymaharani/Kelompok2_QnA_tradisi-bali-bot/assets/94920692/5a0aa2e0-0844-4c3c-bce1-9e80d0f629e1">
+
+    Konsep dari arsitektur DistilBERT serupa dengan model BERT, perbedaannya berada pada lapisan transformer yang tereduksi. Hubungan BERT dan DistilBERT dapat dikatakan sebagai pembelajaran guru (BERT) dan murid (DistilBERT), dimana BERT sebagai guru mentransfer pengetahuannya yang lebih luas kepada DistilBERT dalam proses distilasi, sehingga DistilBERT dapat mengeluarkan output yang sama dengan BERT meskipun kompleksitas model lebih sederhana. Cara kerja DistilBERT dalam proses question answering yaitu dengan memproses input (context dan question) pada layer pertama yaitu embedding layer. Hasil tokenisasi yang telah dilakukan terhadap input tersebut akan diubah menjai reperesentasi vektor numerik dalam lapisan ini. Token yang telah diubah menjadi representasi vektor ini akan dimasukkan ke dalam serangkaian blok Transformer. Di dalam setiap blok Transformer, representasi vektor token akan diolah secara iteratif melalui lapisan-lapisan yang terdiri dari mekanisme self-attention dan jaringan saraf berlapis (feedforward neural networks). Proses ini membantu model untuk memahami hubungan antara token-token dalam konteks dan pertanyaan. Pada output layer, model akan menghasilkan probabilitas distribusi dari token-token dalam urutan, model kemudian akan menggunakan informasi ini untuk menentukan di mana kemungkinan jawaban yang paling mungkin berada di dalam teks konteks. Proses pembangunan model DistilBERT melalui dua fase yaitu pre-training dan fine-tuning. Pada aplikasi QnA ini hanya dilakukan proses fine-tuning dari model yang sudah di pre-training. Model pre-training DistilBERT yang digunakan pada aplikasi ini berasal dari Hugging Face : https://huggingface.co/distilbert-base-uncased
    
 3. Training
 
-   Proses training yang dilakukan yaitu dengan fine-tuning model DistilBert dengan data train Squad. Fine-tuning dilakukan untuk training model yang sudah di pre-training dengan menggunakan data yang lebih sedikit. Sebelum proses training juga dilakukan tokenizer dengan DistilBertTokenizerFast. Proses fine-tuning ini dilakukan dengan 3 epoch.
+   Proses training yang dilakukan yaitu dengan fine-tuning model DistilBERT dengan data train Squad. Fine-tuning dilakukan untuk training model yang sudah di pre-training dengan menggunakan data yang lebih sedikit. Sebelum proses training juga dilakukan tokenizer dengan DistilBertTokenizerFast. Proses fine-tuning ini dilakukan dengan 3 epoch.
    
 4. Testing dab Evaluasi
 
